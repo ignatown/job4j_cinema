@@ -48,23 +48,11 @@ public class PayServlet extends HttpServlet {
                     row,
                     cell,
                     account.getId());
-            try {
-                if (PsqlStore.instOf().findByTicket(row, cell) != null) {
-                    free = false;
-                } else {
                     buy.add(ticket);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
-        if (free) {
-            for (Ticket ticket : buy) {
-                PsqlStore.instOf().saveTicket(ticket);
+            for (Ticket t : buy) {
+                PsqlStore.instOf().saveTicket(t);
             }
-        } else {
-            this.getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
-        }
         buy.clear();
         resp.sendRedirect(req.getContextPath() + "/result.jsp");
     }

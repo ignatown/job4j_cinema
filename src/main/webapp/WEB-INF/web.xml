@@ -4,6 +4,10 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <error-page>
+    <exception-type>java.sql.SQLException</exception-type>
+    <location>/error.jsp</location>
+  </error-page>
   <servlet>
     <servlet-name>HallServlet</servlet-name>
     <servlet-class>ru.job4j.cinema.servlets.HallServlet</servlet-class>

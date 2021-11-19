@@ -117,6 +117,8 @@ public class PsqlStore implements Store {
             ps.setInt(5, ticket.getAccountId());
             ps.execute();
             result = true;
+        } catch (SQLException e) {
+            LOG.error("SQL exception has occurred", e);
         } catch (Exception e) {
             LOG.error("An error occurred while trying to save ticket in the database", e);
         }
